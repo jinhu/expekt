@@ -20,12 +20,12 @@ fun expect(subject: String?, message: String? = null): ExpectString {
     return ExpectString(subject, Flavor.EXPECT, message)
 }
 
-fun <T> expect(subject: Collection<T>?, message: String? = null): ExpectCollection<T> {
-    return ExpectCollection(subject, Flavor.EXPECT, message)
+fun <T> expect(subject: Iterable<T>?, message: String? = null): ExpectIterable<T> {
+    return ExpectIterable(subject, Flavor.EXPECT, message)
 }
 
-fun <T> expect(subject: Sequence<T>?, message: String? = null): ExpectCollection<T> {
-    return ExpectCollection(subject?.toList(), Flavor.EXPECT, message)
+fun <T> expect(subject: Sequence<T>?, message: String? = null): ExpectIterable<T> {
+    return ExpectIterable(subject?.toList(), Flavor.EXPECT, message)
 }
 
 fun <K, V> expect(subject: Map<K, V>?, message: String? = null): ExpectMap<K, V> {
@@ -56,12 +56,12 @@ val Double?.should: ExpectDouble get() {
     return ExpectDouble(this, Flavor.SHOULD)
 }
 
-val <T> Collection<T>?.should: ExpectCollection<T> get() {
-    return ExpectCollection(this, Flavor.SHOULD)
+val <T> Iterable<T>?.should: ExpectIterable<T> get() {
+    return ExpectIterable(this, Flavor.SHOULD)
 }
 
-val <T> Sequence<T>?.should: ExpectCollection<T> get() {
-    return ExpectCollection(this?.toList(), Flavor.SHOULD)
+val <T> Sequence<T>?.should: ExpectIterable<T> get() {
+    return ExpectIterable(this?.toList(), Flavor.SHOULD)
 }
 
 val <K, V> Map<K, V>?.should: ExpectMap<K, V> get() {
